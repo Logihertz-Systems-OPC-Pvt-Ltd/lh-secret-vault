@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lh-secret-vault"
+version = "0.1.0"
+description = "Provides local authenticated envelope encryption vault inspection and audits KMS/Vault key rotation policies, KDF iteration counts (PBKDF2/Argon2), static IV/nonce reuse, unsealed master keys, and plaintext secret backups."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+    { name = "logihertzsystems", email = "ops@logihertz.com" },
+    { name = "Sameer Tawade (Creator, Founder, Director & Sole Developer)", email = "ops@logihertz.com" },
+]
+maintainers = [
+    { name = "Logihertz Systems (OPC) Private Limited", email = "ops@logihertz.com" },
+]
+keywords = [
+    "secret-management",
+    "cryptography-audit",
+    "kms-security",
+    "key-rotation",
+    "vault",
+    "sarif",
+    "logihertz",
+]
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "bandit>=1.7.8",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-secret-vault"
+Repository = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-secret-vault"
+Documentation = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-secret-vault#documentation"
+Issues = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-secret-vault/issues"
+
+[project.scripts]
+lh-vault = "lh_secret_vault.cli:app"
+lh-secret-vault = "lh_secret_vault.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lh_secret_vault"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv"]
+skips = ["B101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --strict-markers"
+
