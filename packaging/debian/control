@@ -1,0 +1,9 @@
+Package: lh-secret-vault
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Sameer Tawade <ops@logihertz.com>
+Homepage: https://www.logihertz.com
+Description: lh-vault - Authenticated Envelope Key Derivation & Rotation Interval
+ Zero-daemon local encrypted credential vault and key-hygiene auditor providing authenticated envelope encryption, PBKDF2 key derivation, key-rotation tracking, and secret exposure scanning.
